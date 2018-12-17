@@ -1,0 +1,82 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<title>RMS</title>
+<meta name="description" content="Index">
+<meta name="author" content="Mitrais">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+
+<!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<!-- Title -->
+				<span class="mdl-layout-title">RMS 2</span>
+				<!-- Add spacer, to align navigation to the right -->
+				<div class="mdl-layout-spacer"></div>
+				<!-- Navigation. We hide it in small screens. -->
+				<nav class="mdl-navigation mdl-layout--large-screen-only">
+					<a class="mdl-navigation__link" href="/registration/">Add User</a>
+					<a class="mdl-navigation__link" href="/admin/users">List User</a>
+					<form th:action="@{/logout}" method="get">
+						<button class="btn btn-md btn-danger btn-block"
+							name="registration" type="Submit">Logout</button>
+					</form>
+			</div>
+		</header>
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">PSMS</span>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" href="/registration/">Add User</a>
+				<a class="mdl-navigation__link" href="/admin/users">List User</a>
+			</nav>
+		</div>
+		<main class="mdl-layout__content">
+		<div class="page-content">
+			<div class="mdl-grid center-items">
+				<div class="mdl-cell mdl-cell--4-col">
+					<div>
+						<table
+							class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th class="mdl-data-table__cell--non-numeric">NO</th>
+									<th>Fisrt Name</th>
+									<th>Last Name</th>
+									<th>Email</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="user : ${users}">
+									<td th:text="${user.id}">1</td>
+									<td><a href="#" th:text="${user.name}">Name</a></td>
+									<td th:text="${user.lastName}">Last Name</td>
+									<td th:text="${user.email}">Email</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		</main>
+
+	</div>
+</body>
+</html>

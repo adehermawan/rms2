@@ -67,4 +67,12 @@ public class LoginController {
         return modelAndView;
     }
 	
+    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+    public ModelAndView users() {
+        ModelAndView usrs = new ModelAndView();
+        usrs.addObject("users", userService.findAllUsers());
+        usrs.setViewName("admin/list_users");
+        return usrs;
+    }
+	
 }

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
 
@@ -27,30 +28,25 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="/PSMS/new">Add New Stuff</a>
-        <a class="mdl-navigation__link" href="/PSMS/list">List All Stuff</a>
+        <a class="mdl-navigation__link" href="/registration/">Add User</a>
+        <a class="mdl-navigation__link" href="/admin/users">List User</a>
+        <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout
+        </button>
+    </form>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">PSMS</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/PSMS/new">Add New Stuff</a>
-      <a class="mdl-navigation__link" href="/PSMS/list">List All Stuff</a>
+      <a class="mdl-navigation__link" href="/registration/">Add User</a>
+      <a class="mdl-navigation__link" href="/admin/users">List User</a>
     </nav>
   </div>
   
     	<main class="mdl-layout__content">
-    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric">User Name</th>
-                  <th>Password</th>
-                </tr>
-              </thead>
-              <tbody>
-             
-              </tbody>
-            </table>
+    		<span th:utext="${userName}"></span>
     	</main>
     </div>
 </body>

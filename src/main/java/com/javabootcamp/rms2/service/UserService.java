@@ -2,6 +2,7 @@ package com.javabootcamp.rms2.service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,6 +37,10 @@ public class UserService {
 		Role userRole = roleRepo.findByRole("ADMIN");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		return userRepo.save(user);
+	}
+	
+	public List<User> findAllUsers() {
+		return userRepo.findAll();
 	}
 	
 }
